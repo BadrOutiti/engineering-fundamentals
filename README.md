@@ -87,8 +87,9 @@ Fix the issues detected by Sonar.
 ## PART E - GitOps (Requires Part B)
 ArgoCD is a heavy used tool to enable gitops. It monitors your github repository and applies the configuration to the configured namespace.
 
-Deploy an AKS cluster and install ArgoCD on it. Then configure ArgoCD to monitor your github repository and apply the configuration to the configured namespace.
+Deploy an AKS cluster and install ArgoCD on it. Then configure ArgoCD to monitor the corresponding configurations in your github repository and apply them to the configured namespace.
 
+You can either use a Demo image [*dockerlimes/ipt-lr-eng*](https://hub.docker.com/r/dockerlimes/ipt-lr-eng), or your own image build in Part B.
 
 ## PART F - Dependency Management
 
