@@ -52,8 +52,8 @@ Tests are vital to ensure that new functionality doesn't break existing features
 Fast shipping of new code can be crutial, for example in the case of security updates. We want our code to be automatically packaged into a Docker Image and published to a Container Registry after successfull completion of every Pull Request.
 
 1. Choose your Container Registry. For example, create a personal AzureContainerRegistry in the Azure ipt Sandbox subscription, or a personal space on hub.docker.com.
-  a. Store the required credentials in an appropriate place; make sure they are not leaked in your code.
-2. Publish your Docker Image to the container registry by creating a new workflow in `.github/workflows`. Ensure that a new appropriate Version Tag is used when publishing the image, and that the image is only pushed upon completion of the PR.
+  a. Store the required credentials in an appropriate place s.t. they can be accessed by the Github Pipeline; make sure they are not leaked in your code.
+2. Use the provided `Dockerfile` to publish your Docker Image to the container registry by creating a new workflow in `.github/workflows`. Ensure that a new appropriate Version Tag is used when publishing the image, and that the image is only pushed upon completion of the PR.
 3. If Docker is available on your local machine, you can try to pull your image from the Container Registry and run it locally.
 
 ## PART C - Continuous Deployment
@@ -66,18 +66,20 @@ Prerequisites:
 2. Azure Web App where the application is deployed
 3. Azure Service Principal with the Contributor Role on your Azure Resource Group. Store the secrets in an appropriate place s.t. they can be used by the Github Actions later on.
 
-The following steps work best if you previously completed PART B (automatic publishing to Azure Container Registry). If you haven't completed PART B, you can just manually publish your Image to Azure Container Registry (needs to be created first).
+For the following Step, you can either use the Demo Docker Image [*dockerlimes/ipt-lr-eng*](https://hub.docker.com/r/dockerlimes/ipt-lr-eng), or, if you completed Step B previously, use your own image.
 
 Let's get started: 
 
-1. Create a new workflow for GitHub where you deploy the latest version of your application which you published before to the registry.
+0. Try to run the Demo App on your local machine: `docker run -it -p 3000:3000 dockerlimes/ipt-lr-eng:v1.0`
+1. Create a new workflow for GitHub where you deploy the latest version of your application ([*dockerlimes/ipt-lr-eng*](https://hub.docker.com/r/dockerlimes/ipt-lr-eng) or your own image) as an Azure Web App
 2. Test your setup by making a change on the codebase (for example make the logo spin faster) and verify that the change is visible on your deployed webapp.
 
 ## PART D - Code Quality
-How's the quality of your code? Lets do an automatic assessment!
+How's the quality of your code?
 
 Use a Github Action (`.github/workflows`) to do an automatic assessment of your Code Quality on [SonarCloud.io](SonarCloud.io). The analysis shall be done for each new Pull Request.
-Does SonarCloud point out any issues? Fix them.
+
+Fix the issues detected by Sonar.
 
 ## PART E - Security (Requires Part B)
 In Part B, when publishing your image to Azure Container Registry, you probably used Admin Credentials. Extend your setup to use a more secure option for authentication.
