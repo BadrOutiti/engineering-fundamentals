@@ -44,7 +44,9 @@ npm run dev
 Tests are vital to ensure that new functionality doesn't break existing features. To ensure that all existing tests are passed when pushing a code change, we want them to be automatically executed when creating a Pull Request.
 
 1. Create a test (e.g. for `src/Counter.tsx`) and execute it by running `npm test`
-2. Create a workflow in `.github/workflows` to create a GitHub Action which runs all tests. The action should be executed for every merge request or push to the main branch.
+2. Create a workflow in `.github/workflows` to create a GitHub Action which runs all tests. The action should be executed for every merge request or push to the main branch. Test results shall be displayed on the PR overview page.
+3. Verify the correct execution and display of Test results in Github
+
 
 ## PART B - Continuous Integration
 Fast shipping of new code can be crutial, for example in the case of security updates. We want our code to be automatically packaged into a Docker Image and published to a Container Registry after successfull completion of every Pull Request.
