@@ -54,9 +54,6 @@ Fast shipping of new code can be crutial, for example in the case of security up
 2. Publish your Docker Image to the container registry by creating a new workflow in `.github/workflows`. Ensure that a new appropriate Version Tag is used when publishing the image, and that the image is only pushed upon completion of the PR.
 3. If Docker is available on your local machine, you can try to pull your image from the Container Registry and run it locally.
 
-## PART B.2 - Security
-In Part B, when publishing your image to Azure Container Registry, you probably used Admin Credentials. What other authentication methods are there, and what are their advantages or disadvantages? Extend your setup to use a more secure option for authentication.
-
 ## PART C - Continuous Deployment
 In this section you are going to create a GitHub Action which runs after the publishing to Azure was successful. 
 
@@ -80,13 +77,16 @@ How's the quality of your code? Lets do an automatic assessment!
 Use a Github Action (`.github/workflows`) to do an automatic assessment of your Code Quality on [SonarCloud.io](SonarCloud.io). The analysis shall be done for each new Pull Request.
 Does SonarCloud point out any issues? Fix them.
 
-## PART E - GitOps (Requires Part B)
+## PART E - Security (Requires Part B)
+In Part B, when publishing your image to Azure Container Registry, you probably used Admin Credentials. Extend your setup to use a more secure option for authentication.
+
+## PART F - GitOps (Requires Part B)
 ArgoCD is a heavy used tool to enable gitops. It monitors your github repository and applies the configuration to the configured namespace.
 
 Deploy an AKS cluster and install ArgoCD on it. Then configure ArgoCD to monitor your github repository and apply the configuration to the configured namespace.
 
 
-## PART F - Dependency Management
+## PART G - Dependency Management
 
 ### Manage Dependencies
 Dependency management is a crucial part of software development. It helps you to keep your dependencies up to date and secure. 
@@ -97,7 +97,7 @@ Add a workflow to your project to automatically update dependencies.
 
 Be careful with permissions and tokens...
 
-## PART G - AI Code Review
+## PART H - AI Code Review
 
 Add the capability to your project to automatically review code changes using AI.
  
