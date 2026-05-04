@@ -42,4 +42,4 @@ USER nodeapp
 EXPOSE 3000
 
 # Command to run the app
-CMD ["serve", "-s", ".", "-l", "3000"]
+CMD ["serve", "-s", ".", "-l", "3000", "--no-clipboard"]
