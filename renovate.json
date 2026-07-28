@@ -2,5 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "description": "Group non-major updates to avoid PR spam",
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "All Non-Major Dependencies"
+    }
   ]
 }
