@@ -22,4 +22,4 @@ jobs:
       - run: npm ci
 
       - name: Report Knip Results
-        uses: codex-/knip-reporter@v3
+        uses: codex-/knip-reporter@v4
